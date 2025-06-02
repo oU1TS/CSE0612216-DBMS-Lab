@@ -1,0 +1,22 @@
+C:\xampp\htdocs\database_connect_demo_55_088
+
+open the folder in VS code
+
+in browser, search http://localhost/database_connect_demo_55_088/insert.php
+
+create database in xampp database_connect_demo_55_088
+
+table insert_data
+
+
+
+
+
+
+
+
+
+
+
+
+

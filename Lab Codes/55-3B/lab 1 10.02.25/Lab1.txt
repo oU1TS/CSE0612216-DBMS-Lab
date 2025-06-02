@@ -1,0 +1,15 @@
+
+CREATE DATABASE temp_dm;
+
+CREATE TABLE temp 
+(
+ID INT,
+Name VARCHAR (50),
+    Dept VARCHAR (30),
+    SECTION VARCHAR (30)
+    );
+
+
+INSERT INTO temp(ID,Name,Dept,Section) VALUES(1,"Gaus","CSE","3B");
+INSERT INTO temp(ID,Name,Dept,Section) 
+VALUES(3,"A","BBA","A"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B"),(4,"B","BBA2","B");

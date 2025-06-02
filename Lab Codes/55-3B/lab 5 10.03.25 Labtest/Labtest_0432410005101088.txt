@@ -1,0 +1,35 @@
+create table Students
+(
+    StudentID int (5) Primary key,
+    Name varchar(255),
+    Age int(5),
+    Grade vARCHAR(255),
+             City varchar (255)
+                 );
+
+insert into students (StudentID,Name,Age,Grade,City) VALUES
+(1,"Alice Johnson",14,"8th", "New York"),
+(2,"Bob Smith",15,"9th", "Los Angeles"),
+(3,"Charlie Davis",13,"7th", "Chicago"),
+(4,"David Williams",16,"10th", "Houston"),
+(5,"Emily Brown",14,"8th", "Miami");
+
+
+1. SELECT * FROM `students`;
+2. SELECT Name,Age FROM `students`;
+3. SELECT * FROM `students` WHERE Grade = "8th";
+4. SELECT * FROM `students` WHERE City="New York";
+5. SELECT Name FROM `students` WHERE Age>14;
+6. SELECT count(StudentID) FROM `students`;
+7. SELECT * FROM `students` where Name like "A%";
+8. SELECT * FROM `students` where Grade in("8th","7th");
+9. SELECT * FROM `students` where City!="Los Angeles";
+10. SELECT * FROM `students` where Age Between 13 and 15;
+11. SELECT * FROM `students` where Grade Between "7th" and "9th";
+12. 
+alter table students
+add column Email varchar(255);
+
+13.
+14.
+

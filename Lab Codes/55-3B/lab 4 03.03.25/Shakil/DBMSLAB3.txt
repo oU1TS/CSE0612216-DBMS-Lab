@@ -1,0 +1,41 @@
+productmanager:
+
+CREATE TABLE Products_manager(
+    product_no VARCHAR(10) PRIMARY KEY,
+    description VARCHAR(50),
+    profit_percent DECIMAL(5,2),
+    unit_measure VARCHAR(20),
+    qty_on_hand INT,
+    reorder_lvl INT,
+    sell_price DECIMAL(10,2),
+    cost_price DECIMAL(10,2)
+);
+
+INSERT INTO Products_manager (product_no, description, profit_percent, unit_measure, qty_on_hand, reorder_lvl, sell_price, cost_price) VALUES
+('P00001', '1.44floppies', 5, 'Piece', 100, 20, 525, 500),
+('P03453', 'Monitors', 6, 'Piece', 10, 3, 12000, 11200),
+('P06734', 'Mouse', 5, 'Piece', 20, 5, 1050, 500),
+('P07865', '1.22 floppies', 5, 'Piece', 100, 20, 525, 500),
+('P07886', 'Keyboards', 2, 'Piece', 10, 3, 3150, 3050),
+('P07885', 'CD Drive', 2.5, 'Piece', 10, 3, 5250, 5100),
+('P07965', '540 HDD', 4, 'Piece', 10, 3, 8400, 8000),
+('P07975', '1.44 Drive', 5, 'Piece', 10, 3, 1050, 1000),
+('P08865', '1.22 Drive', 5, 'Piece', 2, 3, 1050, 1000);
+
+i dont save clients manager table query
+
+SELECT name FROM `clients_masteraa`
+SELECT name,city FROM `clients_masteraa`
+SELECT description FROM `products_masteraa`
+SELECT name FROM `clients_masteraa`WHERE city='Bombay';
+SELECT * FROM `clients_masteraa` WHERE client_no IN('0001','0002');
+SELECT * FROM `products_mastera` WHERE description IN('1.44 Drive','1.22 Drive');
+SELECT description FROM `products_mastera` WHERE sell_price>5000;
+SELECT * FROM `clients_masteraa` WHERE city='Bombay' OR city='Delhi' OR city='Madras';
+SELECT description FROM `products_mastera` WHERE sell_price>2000 AND sell_price<=5000;  
+SELECT * FROM `clients_masteraa` WHERE state LIKE '%maha%'; 
+SELECT * FROM `clients_masteraa` WHERE state LIKE 'maha%'; 
+SELECT * FROM `clients_masteraa` WHERE state LIKE '%maha'; 
+SELECT * FROM `clients_masteraa` WHERE client_no IN (0001,0002); 
+SELECT * FROM `clients_masteraa` WHERE client_no BETWEEN 0001 and 0005; 
+SELECT * FROM `clients_masteraa` WHERE client_no NOT BETWEEN 0001 and 0003; 

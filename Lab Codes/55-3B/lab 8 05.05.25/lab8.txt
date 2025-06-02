@@ -1,0 +1,271 @@
+create table suppliers(
+    supplier_id int(10),
+    supplier_name varchar(30)
+    )
+
+create table orders(
+    order_id int(10),
+    supplier_id int(10),
+    order_date date
+    )
+
+*** we do not need to use foreign key
+
+alter table suppliers
+modify column supplier_id int(10) primary key;
+
+//alter table orders 
+//modify column foreign key supplier_id int(10) references suppliers(supplier_id);
+
+drop table orders;
+// dropped to add foreign key supplier_id
+
+*** we do not need to use foreign key for 4 and 5 questions
+
+insert into suppliers (supplier_id,supplier_name) VALUES
+(10000, "IBM");
+
+*** alt 
+
+insert into suppliers VALUES
+(10000, "IBM");
+
+// do not need to use (positios) before values
+
+insert into suppliers VALUES
+(10001, "Hewlett Packard"),
+(10002, "Microsoft"),
+(10003, "NVIDIA");
+
+
+insert into orders values 
+(500125,10000,"2013-05-12"),
+(500126,10001,"2013-05-13");
+
+
+//select supplier_id,supplier_name,order_date
+//from suppliers
+//inner join orders 
+//on suppliers.supplier_id=orders.supplier_id;
+
+*** need to add table references suppliers. and orders.
+
+select suppliers.supplier_id,suppliers.supplier_name,orders.order_date
+from suppliers
+inner join orders 
+on suppliers.supplier_id=orders.supplier_id;
+
+
+------------------------------------------------------------------
+Assignment No. # 5
+------------------------------------------------------------------
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
+15.
+16.
+17.
+18.
+19.
+20
+
+
+------------------------------------------------------------------
+Joine Excercise
+------------------------------------------------------------------
+create database joinEx;
+
+CREATE TABLE salesman (
+  salesman_id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  city TEXT NOT NULL,
+  comission decimal(3,2)
+
+);
+
+INSERT INTO salesman VALUES (5001, 'James Hoog', 'New York', 0.15);
+INSERT INTO salesman VALUES (5002, 'Nail Knite', 'Paris' ,0.13);
+INSERT INTO salesman VALUES (5005, 'Pit Alex','London', 0.11);
+INSERT INTO salesman VALUES (5006,  'Mc Lyon', 'Paris' ,0.14);
+INSERT INTO salesman VALUES (5007,  'Paul Adam', 'Rome' , 0.13);
+INSERT INTO salesman VALUES (5003,  'Lauson Hen', 'San Jose' ,0.12);
+
+CREATE TABLE customer (
+  customer_id INTEGER PRIMARY KEY,
+  cust_name TEXT NOT NULL,
+  city TEXT NOT NULL,
+  grade INTEGER,
+  salesman_id INTEGER
+);
+
+INSERT INTO customer VALUES ( 3002, 'Nick Rimando' ,'New York',  100 ,5001);
+INSERT INTO customer VALUES (3007, 'Brad Davis',  'New York' , 200, 5001);
+INSERT INTO customer VALUES (3005, 'Graham Zusi', 'California' ,200 ,5002);
+INSERT INTO customer VALUES (3008 ,'Julian Green', 'London' , 300, 5002);
+INSERT INTO customer VALUES (3004, 'Fabian Johnson' ,'Paris' , 300, 5006);
+INSERT INTO customer VALUES (3009, 'Geoff Cameron', 'Berlin',  100, 5003);
+INSERT INTO customer VALUES (3003 ,'Jozy Altidor', 'Moscow', 200,  5007);
+INSERT INTO customer VALUES (3001, 'Brad Guzan', 'London' , ' ' , 5005);
+
+
+CREATE TABLE orders (
+  ord_no INTEGER PRIMARY KEY,
+  purch_amt INTEGER,
+  ord_date date,
+  customer_id INTEGER,
+  salesman_id INTEGER
+);
+
+alter table orders rename to orders2;
+
+INSERT INTO orders VALUES (70001, 150.5, '2012-10-05', 3005, 5002);
+INSERT INTO orders VALUES (70009, 270.65, '2012-09-10', 3001, 5005);
+INSERT INTO orders VALUES (70002, 65.26 ,'2012-10-05' ,3002, 5001);
+INSERT INTO orders VALUES (70004, 110.5, '2012-08-17', 3009, 5003);
+INSERT INTO orders VALUES (70007, 948.5, '2012-09-10', 3005, 5002);
+INSERT INTO orders VALUES (70005, 2400.6, '2012-07-27', 3007, 5001);
+INSERT INTO orders VALUES (70008, 5760, '2012-09-10', 3002, 5001);
+INSERT INTO orders VALUES (70010, 1983.43, '2012-10-10', 3004, 5006);
+INSERT INTO orders VALUES (70003, 2480.4, '2012-10-10', 3009, 5003);
+INSERT INTO orders VALUES (70012, 250.45, '2012-06-27', 3008, 5002);
+INSERT INTO orders VALUES (70011, 75.29, '2012-08-17', 3003, 5007);
+INSERT INTO orders VALUES (70013, 3045.6, '2012-04-25', 3002, 5001);
+
+
+1. select salesman.name,customer.cust_name,salesman.city 
+from salesman
+inner join customer
+on salesman.city=customer.city;
+
+2. select ord_no, purch_amt, cust_name, city
+from customer,orders
+having purch_amt between 500 and 2000;
+
+3. select customer.cust_name, customer.city,  salesman.name, salesman.comission
+from customer
+inner join salesman 
+on salesman.salesman_id=customer.salesman_id;
+
+4.
+select  salesman.name,customer.cust_name, customer.city, salesman.comission
+from salesman
+inner join customer
+where salesman.comission >0.12
+order by salesman.comission;
+
+5. select customer.cust_name, customer.city, salesman.name, salesman.city,salesman.comission 
+from customer
+inner join salesman 
+where customer.city!=salesman.city AND salesman.comission > 0.12;
+
+6. select orders.ord_no, orders.ord_date, orders.purch_amt, customer.cust_name, customer.grade, salesman.name, salesman.comission
+from customer 
+inner join orders
+on customer.customer_id=orders.customer_id
+inner join salesman
+on salesman.salesman_id=orders.salesman_id;
+
+7. select customer.cust_name, customer.city, customer.grade, 
+salesman.name, salesman.city
+from customer 
+inner join orders
+on customer.customer_id=orders.customer_id
+inner join salesman
+on salesman.salesman_id=orders.salesman_id
+order by customer.customer_id;
+
+8. 
+select customer.cust_name, customer.city, customer.grade, salesman.name , salesman.city
+from customer 
+inner join orders
+on customer.customer_id=orders.customer_id
+inner join salesman
+on salesman.salesman_id=orders.salesman_id
+where customer.grade < 300
+order by customer.customer_id;
+
+9. select customer.cust_name, customer.city, orders.ord_no, orders.ord_date, orders.purch_amt
+from customer 
+left join orders
+on customer.customer_id=orders.customer_id
+order by orders.ord_date;
+
+10. select customer.cust_name, customer.city, orders.ord_no, orders.ord_date,orders.purch_amt, salesman.name, salesman.comission
+from customer
+left join orders
+on orders.customer_id=customer.customer_id
+left join salesman
+on salesman.salesman_id=customer.customer_id;
+ 
+11. select salesman.name, customer.cust_name
+from salesman
+left join customer
+on salesman.salesman_id=customer.salesman_id
+order by salesman.salesman_id;
+
+12. select salesman.name, customer.cust_name, customer.city, customer.grade, orders.ord_no, orders.ord_date, orders.purch_amt
+from salesman 
+Inner join orders 
+on salesman.salesman_id=orders.salesman_id
+inner join customer 
+on orders.customer_id=customer.customer_id;
+
+13. select salesman.name, customer.cust_name, orders.purch_amt, customer.grade
+from salesman
+left join customer
+on salesman.salesman_id=customer.salesman_id
+left join orders 
+on customer.customer_id=orders.customer_id
+where (orders.purch_amt >= 2000) AND (customer.grade IS NOT NULL) OR (orders.ord_no IS NULL);
+
+14. select customer.cust_name, customer.city, orders.ord_no, orders.ord_date, orders.purch_amt
+from orders 
+left join customer
+on orders.customer_id=customer.customer_id;
+
+15. select customer.cust_name, customer.city, orders.ord_no, orders.ord_date, orders.purch_amt
+from orders 
+left join customer
+on orders.customer_id=customer.customer_id
+where (customer.grade is not null) or (customer.customer_id is null or customer.grade is null);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+
+# temp_dm
+
+update temp
+set Name = "Rashik"
+where ID = 2;
+
+drop table temp;
+
+-------------------------------- 
+
+# Assignment No. 2
+
+1. update product_master
+set sell_price = 1150
+where description = "1.44floppies";
+
+2. (kept for future work)
+3. update client_master
+set city = "Bombay"
+where client_no = 0005;
+
+4. update client_master
+set bal_due = 1000
+where client_no = 0001;
+
+5. select sell_price,sell_price*15 as new_selling_price from product_master where sell_price>1500;
+
+//update product_master
+//set sell_price=sell_price*15
+//where sell_price>1500;
+//select * from product_master where sell_price>1500;
+
+6. select * from client_master where city like "_a%";
+7. select name from client_master where name like "_a%";
+8. (using sorting function)
+9. (error)
+alter table product_master
+change reoder_lvl order_num varchar(255);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

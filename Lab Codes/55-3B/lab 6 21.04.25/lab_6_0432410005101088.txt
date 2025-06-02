@@ -1,0 +1,109 @@
+create database Saraf_21_04_25;
+------------------------------------------------------------
+create table emp(
+    eno int(10) primary key,
+    ename varchar(40) not null,
+    bdate date,
+    title varchar(40) not null,
+    salary int(10) not null,
+    dno int(10) not null
+    
+  )
+------------------------------------------------------------
+create table dept(
+dno int(10) primary key,
+    dname varchar(30) not null,
+    mgreno int(10) not null
+
+)
+------------------------------------------------------------
+create table proj(
+pno int(10) primary key,
+    pname varchar(30) not null,
+    budget int(10) not null,
+    dno int(10) not null
+    
+)
+------------------------------------------------------------
+#method 01:
+create table workson_01(
+   eno int(10),
+    pno int(10),
+    resp varchar(30) not null,
+    hours int(10) not null,
+primary key(eno,pno),
+    
+    foreign key(eno) references emp(eno),
+foreign key(pno) references proj(pno)
+    
+)
+------------------------------------------------------------
+#method 02:
+create table workson(
+   eno int(10),
+    pno int(10),
+constraint fk_01 foreign key(eno) references emp(eno),
+constraint fk_02 foreign key(pno) references proj(pno),
+    resp varchar(30) not null,
+    hours int(10) not null
+)
+------------------------------------------------------------
+INSERT INTO dept VALUES (1, 'HR', 1001);
+INSERT INTO dept VALUES (2, 'IT', 1002);
+INSERT INTO dept VALUES (3, 'Finance', 1003);
+------------------------------------------------------------
+INSERT INTO emp VALUES (1001, 'Alice', '1985-06-15', 'Manager', 90000, 1);
+INSERT INTO emp VALUES (1002, 'Bob', '1990-03-22', 'Developer', 75000, 2);
+INSERT INTO emp VALUES (1003, 'Charlie', '1988-11-02', 'Analyst', 68000, 3);
+INSERT INTO emp VALUES (1004, 'David', '1992-07-19', 'Developer', 72000, 2);
+------------------------------------------------------------
+INSERT INTO proj VALUES (201, 'Project Alpha', 500000, 2);
+INSERT INTO proj VALUES (202, 'Project Beta', 300000, 1);
+INSERT INTO proj VALUES (203, 'Project Gamma', 400000, 3);
+------------------------------------------------------------
+INSERT INTO workson VALUES (1002, 201, 'Backend Dev', 40);
+INSERT INTO workson VALUES (1004, 201, 'Frontend Dev', 35);
+INSERT INTO workson VALUES (1003, 203, 'Data Analysis', 30);
+INSERT INTO workson VALUES (1001, 202, 'Project Lead', 20);
+------------------------------------------------------------
+1. SELECT eno,ename FROM `emp` WHERE ename="Alice" or ename="Bob" and salary > 35000;
+2. SELECT * FROM `workson` WHERE hours<=40 and resp="Backend Dev";
+3. SELECT pno,pname FROM `proj` WHERE budget>100000;
+4. SELECT * FROM `workson` WHERE resp is not null and hours between 20 and 50;
+5. SELECT dno FROM `dept` WHERE dno like "1%";
+6. SELECT * FROM `proj` order by budget asc;
+7. SELECT count(pno) FROM `proj` WHERE dno=2;
+8. SELECT max(salary) FROM `emp`;
+
+
+
+
+
+
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

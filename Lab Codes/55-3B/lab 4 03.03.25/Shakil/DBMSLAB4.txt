@@ -1,0 +1,27 @@
+UPDATE clients_masteraa SET name = "SHAKIL" WHERE client_no=0001;
+SELECT * FROM clients_masteraa WHERE client_no= 003; 
+DROP TABLE table_name;
+
+The TRUNCATE statement in SQL is used to quickly and efficiently delete all rows from a table while preserving its structure. Unlike DELETE, 
+TRUNCATE is faster because it does not log individual row deletions and cannot include a WHERE clause. It is typically used to reset a table for reuse.
+TRUNCATE TABLE table_name;
+
+ALTER TABLE table_name
+[ADD column_definition | MODIFY column_definition | DROP COLUMN column_name | RENAME TO new_table_name];
+
+
+
+1.SELECT MAX(sell_price) AS max_sell_price FROM products_mastera;
+2.
+3.UPDATE clients_masteraa SET city="Bombay" WHERE client_no=0005; 
+4.UPDATE clients_masteraa SET bal_due=1000 WHERE client_no=0001; 
+5.
+6.SELECT city
+FROM clients_masteraa
+WHERE SUBSTRING(city, 2, 1) = 'a';
+7.SELECT name FROM clients_masteraa WHERE SUBSTRING(name, 2, 1) = 'a'; 
+8.SELECT description FROM products_mastera ORDER BY description ASC;  
+9.SELECT SUM(reorder_lvl) AS totalsum_value FROM products_mastera; 
+10.SELECT AVG(sell_price) AS average_value FROM products_mastera; 
+12.SELECT MAX(sell_price) AS max_price ,MIN(sell_price) AS min_price FROM products_mastera; 
+13.SELECT COUNT(sell_price) AS product_count FROM products_mastera WHERE sell_price >= 1500; 

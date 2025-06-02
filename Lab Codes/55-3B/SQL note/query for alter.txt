@@ -1,0 +1,4 @@
+# for new SQL version:
+alter table demo rename to demo1;
+# for old SQL version:
+ALTER TABLE demo1 CHANGE col1 col5 INT;
